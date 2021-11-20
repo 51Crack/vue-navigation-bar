@@ -446,7 +446,9 @@
                   domProps: { innerHTML: _vm._s(_vm.option.iconLeft) }
                 })
               : _vm._e(),
-            _vm._v("\n  " + _vm._s(_vm.option.text) + "\n  "),
+            _vm._v(" "),
+            _c("span", { domProps: { innerHTML: _vm._s(_vm.option.text) } }),
+            _vm._v(" "),
             _vm.option.iconRight
               ? _c("span", {
                   staticClass:
@@ -574,7 +576,15 @@
                                             staticClass:
                                               "vnb__sub-menu-options__option__link__text-wrapper__sub-text"
                                           },
-                                          [_vm._v(_vm._s(subOption.subText))]
+                                          [
+                                            _c("span", {
+                                              domProps: {
+                                                innerHTML: _vm._s(
+                                                  subOption.subText
+                                                )
+                                              }
+                                            })
+                                          ]
                                         )
                                       : _vm._e()
                                   ]
@@ -1268,7 +1278,13 @@
                                           staticClass:
                                             "vnb__popup__bottom__sub-menu-options__option__link__sub-text"
                                         },
-                                        [_vm._v(_vm._s(subOption.subText))]
+                                        [
+                                          _vm._v(
+                                            "\n                  " +
+                                              _vm._s(subOption.subText) +
+                                              "\n                "
+                                          )
+                                        ]
                                       )
                                     ]
                                   )

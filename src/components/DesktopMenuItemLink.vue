@@ -76,32 +76,26 @@
           :aria-label="subOption.text"
           tabindex="0"
           @keydown.tab.native="subMenuItemTabbed(subOption.text)"
-          :isLinkAction="subOption.isLinkAction ? true : false"
-        >
+          :isLinkAction="subOption.isLinkAction ? true : false">
           <span
             v-if="subOption.iconLeft"
             class="vnb__sub-menu-options__option__link__icon vnb__sub-menu-options__option__link__icon--left"
-            v-html="subOption.iconLeft"
-          ></span>
+            v-html="subOption.iconLeft"></span>
 
           <span class="vnb__sub-menu-options__option__link__text-wrapper">
-            <span
-              class="vnb__sub-menu-options__option__link__text-wrapper__text"
-              >{{ subOption.text }}</span
-            >
+            <span class="vnb__sub-menu-options__option__link__text-wrapper__text">{{ subOption.text }}</span>
 
             <span
               v-if="subOption.subText"
-              class="vnb__sub-menu-options__option__link__text-wrapper__sub-text"
-              >{{ subOption.subText }}</span
-            >
+              class="vnb__sub-menu-options__option__link__text-wrapper__sub-text">
+              <span v-html="subOption.subText"></span>
+            </span>
           </span>
 
           <span
             v-if="subOption.iconRight"
             class="vnb__sub-menu-options__option__link__icon vnb__sub-menu-options__option__link__icon--right"
-            v-html="subOption.iconRight"
-          ></span>
+            v-html="subOption.iconRight"></span>
         </dynamic-link>
 
         <hr v-else class="vnb__sub-menu-options__option__hr" tabindex="-1" />

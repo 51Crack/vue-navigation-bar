@@ -34,14 +34,12 @@
     <span
       v-if="option.iconLeft"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--left"
-      v-html="option.iconLeft"
-    ></span>
-    {{ option.text }}
+      v-html="option.iconLeft"></span>
+    <span v-html="option.text"></span>
     <span
       v-if="option.iconRight"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--right"
-      v-html="option.iconRight"
-    ></span>
+      v-html="option.iconRight"></span>
     <svg
       height="28pt"
       preserveAspectRatio="xMidYMid meet"

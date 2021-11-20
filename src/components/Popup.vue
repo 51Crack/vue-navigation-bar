@@ -96,13 +96,11 @@
                   class="vnb__popup__bottom__sub-menu-options__option__link"
                   @click.native="itemSelected(subOption)"
                   :aria-label="subOption.text"
-                  :isLinkAction="option.isLinkAction ? true : false"
-                >
+                  :isLinkAction="option.isLinkAction ? true : false">
                   {{ subOption.text }}
-                  <span
-                    class="vnb__popup__bottom__sub-menu-options__option__link__sub-text"
-                    >{{ subOption.subText }}</span
-                  >
+                  <span class="vnb__popup__bottom__sub-menu-options__option__link__sub-text">
+                    {{ subOption.subText }}
+                  </span>
                 </dynamic-link>
               </div>
             </div>

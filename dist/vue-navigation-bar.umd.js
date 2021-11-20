@@ -414,7 +414,9 @@
                   domProps: { innerHTML: _vm._s(_vm.option.iconLeft) }
                 })
               : _vm._e(),
-            _vm._v("\n  " + _vm._s(_vm.option.text) + "\n  "),
+            _vm._v(" "),
+            _c("span", { domProps: { innerHTML: _vm._s(_vm.option.text) } }),
+            _vm._v(" "),
             _vm.option.iconRight
               ? _c("span", {
                   staticClass:

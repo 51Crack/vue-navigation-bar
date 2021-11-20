@@ -1,15 +1,12 @@
 {
-  "name": "vue-navigation-bar",
-  "version": "4.1.0",
+  "name": "vue-nav-menu-51crack",
+  "version": "4.1.1",
   "description": "A simple, pretty navbar for your Vue projects.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johndatserakis/vue-navigation-bar.git"
-  },
-  "bugs": {
-    "url": "https://github.com/johndatserakis/vue-navigation-bar/issues"
   },
   "keywords": [
     "vue",
@@ -97,5 +94,11 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!tippy.js/themes/light.css)"
     ]
+  },
+  "homepage": "https://github.com/johndatserakis/vue-navigation-bar#readme",
+  "directories": {
+    "doc": "docs",
+    "example": "example",
+    "test": "test"
   }
 }

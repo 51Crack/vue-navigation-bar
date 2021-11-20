@@ -561,7 +561,13 @@ var __vue_render__$1 = function() {
                                       staticClass:
                                         "vnb__sub-menu-options__option__link__text-wrapper__text"
                                     },
-                                    [_vm._v(_vm._s(subOption.text))]
+                                    [
+                                      _c("span", {
+                                        domProps: {
+                                          innerHTML: _vm._s(subOption.text)
+                                        }
+                                      })
+                                    ]
                                   ),
                                   _vm._v(" "),
                                   subOption.subText

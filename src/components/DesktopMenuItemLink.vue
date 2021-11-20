@@ -83,7 +83,7 @@
             v-html="subOption.iconLeft"></span>
 
           <span class="vnb__sub-menu-options__option__link__text-wrapper">
-            <span class="vnb__sub-menu-options__option__link__text-wrapper__text">{{ subOption.text }}</span>
+            <span class="vnb__sub-menu-options__option__link__text-wrapper__text"><span v-html="subOption.text"></span></span>
 
             <span
               v-if="subOption.subText"

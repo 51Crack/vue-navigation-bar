@@ -447,7 +447,10 @@
                 })
               : _vm._e(),
             _vm._v(" "),
-            _c("span", { domProps: { innerHTML: _vm._s(_vm.option.text) } }),
+            _c("span", {
+              staticClass: "vnb__menu-options__option__link__text",
+              domProps: { innerHTML: _vm._s(_vm.option.text) }
+            }),
             _vm._v(" "),
             _vm.option.iconRight
               ? _c("span", {
@@ -560,38 +563,22 @@
                                       "vnb__sub-menu-options__option__link__text-wrapper"
                                   },
                                   [
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "vnb__sub-menu-options__option__link__text-wrapper__text"
-                                      },
-                                      [
-                                        _c("span", {
-                                          domProps: {
-                                            innerHTML: _vm._s(subOption.text)
-                                          }
-                                        })
-                                      ]
-                                    ),
+                                    _c("span", {
+                                      staticClass:
+                                        "vnb__sub-menu-options__option__link__text-wrapper__text",
+                                      domProps: {
+                                        innerHTML: _vm._s(subOption.text)
+                                      }
+                                    }),
                                     _vm._v(" "),
                                     subOption.subText
-                                      ? _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "vnb__sub-menu-options__option__link__text-wrapper__sub-text"
-                                          },
-                                          [
-                                            _c("span", {
-                                              domProps: {
-                                                innerHTML: _vm._s(
-                                                  subOption.subText
-                                                )
-                                              }
-                                            })
-                                          ]
-                                        )
+                                      ? _c("span", {
+                                          staticClass:
+                                            "vnb__sub-menu-options__option__link__text-wrapper__sub-text",
+                                          domProps: {
+                                            innerHTML: _vm._s(subOption.subText)
+                                          }
+                                        })
                                       : _vm._e()
                                   ]
                                 ),

@@ -12,14 +12,12 @@
     <span
       v-if="option.iconLeft"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--left"
-      v-html="option.iconLeft"
-    ></span>
+      v-html="option.iconLeft"></span>
     <span v-html="option.text"></span>
     <span
       v-if="option.iconRight"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--right"
-      v-html="option.iconRight"
-    ></span>
+      v-html="option.iconRight"></span>
   </dynamic-link>
 
   <span
@@ -35,11 +33,14 @@
       v-if="option.iconLeft"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--left"
       v-html="option.iconLeft"></span>
-    <span v-html="option.text"></span>
+    <span class="vnb__menu-options__option__link__text"
+           v-html="option.text">
+    </span>
     <span
       v-if="option.iconRight"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--right"
-      v-html="option.iconRight"></span>
+      v-html="option.iconRight">
+    </span>
     <svg
       height="28pt"
       preserveAspectRatio="xMidYMid meet"
@@ -80,22 +81,26 @@
           <span
             v-if="subOption.iconLeft"
             class="vnb__sub-menu-options__option__link__icon vnb__sub-menu-options__option__link__icon--left"
-            v-html="subOption.iconLeft"></span>
+            v-html="subOption.iconLeft">
+          </span>
 
           <span class="vnb__sub-menu-options__option__link__text-wrapper">
-            <span class="vnb__sub-menu-options__option__link__text-wrapper__text"><span v-html="subOption.text"></span></span>
+            <span class="vnb__sub-menu-options__option__link__text-wrapper__text"
+                  v-html="subOption.text">
+            </span>
 
             <span
               v-if="subOption.subText"
-              class="vnb__sub-menu-options__option__link__text-wrapper__sub-text">
-              <span v-html="subOption.subText"></span>
+              class="vnb__sub-menu-options__option__link__text-wrapper__sub-text"
+              v-html="subOption.subText">
             </span>
           </span>
 
           <span
             v-if="subOption.iconRight"
             class="vnb__sub-menu-options__option__link__icon vnb__sub-menu-options__option__link__icon--right"
-            v-html="subOption.iconRight"></span>
+            v-html="subOption.iconRight">
+          </span>
         </dynamic-link>
 
         <hr v-else class="vnb__sub-menu-options__option__hr" tabindex="-1" />
@@ -228,126 +233,130 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/css/main.scss";
-
-.vnb {
-  &__menu-options {
-    &__option {
-      &__link {
-        cursor: pointer;
-        font-weight: 500;
-        color: lighten($black, 15%);
-        transition: color 0.2s ease-in;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-
-        &:hover {
-          color: $black;
-          text-decoration: none;
-        }
-
-        &__icon {
-          svg {
-            max-height: 20px;
-          }
-
-          &--left {
-            margin-right: 5px;
-          }
-
-          &--right {
-            margin-left: 5px;
-          }
-        }
-      }
-
-      &__arrow {
-        max-height: 5px;
-        max-width: 25px;
-        transition: transform 0.2s ease-in-out;
-
-        &--hover {
-          transform: rotate(180deg);
-        }
-      }
-    }
-  }
-
-  &__sub-menu-options {
-    background: $white;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: $border-radius;
-    padding: 10px 0;
-
-    &__option {
-      min-width: 250px;
-      max-width: 300px;
-
-      &__link {
-        padding: 12px 12px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: lighten($black, 15%);
-        transition: color 0.2s ease-in, background 0.2s ease-in,
-          border 0.2s ease-in;
-        border-left: 2px solid $white;
-
-        &:hover {
-          color: $black;
-          text-decoration: none;
-          background: lighten($grey, 2%);
-          border-left: 2px solid $blue;
-          cursor: pointer;
-        }
-
-        &__icon {
-          svg {
-            max-height: 40px;
-          }
-
-          &--left {
-            margin-right: 15px;
-          }
-
-          &--right {
-            margin-left: 15px;
-          }
-        }
-
-        &__text-wrapper {
-          width: 100%;
-
-          &__text {
-            display: block;
-            text-align: left;
-          }
-
-          &__sub-text {
-            margin-top: 5px;
-            display: block;
-            font-size: 0.8rem;
-            text-align: left;
-            color: lighten($black, 35%);
-          }
-        }
-      }
-
-      &__hr {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-color: rgba(0, 0, 0, 0.1);
-      }
-    }
-  }
-}
+//@import "../assets/css/main.scss";
+//
+//.vnb {
+//  &__menu-options {
+//    &__option {
+//      &__link {
+//        cursor: pointer;
+//        font-weight: 500;
+//        color: lighten($black, 15%);
+//        transition: color 0.2s ease-in;
+//        display: flex;
+//        flex-direction: row;
+//        align-items: center;
+//        justify-content: center;
+//        font-size: 1rem;
+//        outline: none;
+//
+//        &:hover {
+//          color: $black;
+//          font-weight: bold;
+//          text-decoration: none;
+//        }
+//
+//        &__icon {
+//          svg {
+//            max-height: 20px;
+//          }
+//
+//          &--left {
+//            margin-right: 5px;
+//          }
+//
+//          &--right {
+//            margin-left: 5px;
+//          }
+//        }
+//      }
+//
+//      &__arrow {
+//        max-height: 5px;
+//        max-width: 25px;
+//        transition: transform 0.2s ease-in-out;
+//
+//        &--hover {
+//          transform: rotate(180deg);
+//        }
+//      }
+//    }
+//  }
+//
+//  &__sub-menu-options {
+//    background: $white;
+//    max-width: 500px;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: center;
+//    align-items: center;
+//    border-radius: $border-radius;
+//    padding: 10px 0;
+//    outline: none;
+//
+//    &__option {
+//      min-width: 140px;
+//      max-width: 300px;
+//
+//      &__link {
+//        padding: 12px 12px;
+//        width: 100%;
+//        display: flex;
+//        flex-direction: row;
+//        justify-content: center;
+//        align-items: center;
+//        color: lighten($black, 15%);
+//        transition: color 0.2s ease-in, background 0.2s ease-in,
+//          border 0.2s ease-in;
+//        border-left: 2px solid $white;
+//
+//        &:hover {
+//          color: $black;
+//          text-decoration: none;
+//          background: lighten($grey, 2%);
+//          border-left: 2px solid $blue;
+//          cursor: pointer;
+//          font-weight: bold;
+//        }
+//
+//        &__icon {
+//          svg {
+//            max-height: 40px;
+//          }
+//
+//          &--left {
+//            margin-right: 15px;
+//          }
+//
+//          &--right {
+//            margin-left: 15px;
+//          }
+//        }
+//
+//        &__text-wrapper {
+//          width: 100%;
+//
+//          &__text {
+//            display: block;
+//            text-align: left;
+//          }
+//
+//          &__sub-text {
+//            margin-top: 5px;
+//            display: block;
+//            font-size: 0.8rem;
+//            text-align: left;
+//            color: lighten($black, 35%);
+//          }
+//        }
+//      }
+//
+//      &__hr {
+//        margin-top: 8px;
+//        margin-bottom: 8px;
+//        border-color: rgba(0, 0, 0, 0.1);
+//      }
+//    }
+//  }
+//}
 </style>

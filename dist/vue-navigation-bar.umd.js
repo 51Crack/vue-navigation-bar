@@ -212,7 +212,11 @@
             },
             nativeOn: {
               click: function($event) {
-                return _vm.$emit("vnb-item-clicked", "brand-image")
+                return _vm.$emit(
+                  "vnb-item-clicked",
+                  "brand-image",
+                  _vm.options.brandImagePath
+                )
               }
             }
           },
@@ -402,7 +406,11 @@
             },
             nativeOn: {
               click: function($event) {
-                return _vm.$emit("vnb-item-clicked", _vm.option.text)
+                return _vm.$emit(
+                  "vnb-item-clicked",
+                  _vm.option.text,
+                  _vm.option.path
+                )
               }
             }
           },
@@ -474,8 +482,6 @@
                 }
               },
               [
-                _c("title", [_vm._v("Toggle Arrow")]),
-                _vm._v(" "),
                 _c("path", {
                   attrs: {
                     d:
@@ -523,7 +529,11 @@
                                 nativeOn: {
                                   click: function($event) {
                                     _vm.subMenuItemSelected(subOption.text);
-                                    _vm.$emit("vnb-item-clicked", subOption.text);
+                                    _vm.$emit(
+                                      "vnb-item-clicked",
+                                      subOption.text,
+                                      subOption.path
+                                    );
                                   },
                                   keydown: function($event) {
                                     if (
@@ -698,7 +708,7 @@
         },
         nativeOn: {
           click: function($event) {
-            return _vm.$emit("vnb-item-clicked", _vm.option.text)
+            return _vm.$emit("vnb-item-clicked", _vm.option.text, _vm.option.path)
           }
         }
       },
@@ -710,7 +720,9 @@
               domProps: { innerHTML: _vm._s(_vm.option.iconLeft) }
             })
           : _vm._e(),
-        _vm._v("\n  " + _vm._s(_vm.option.text) + "\n  "),
+        _vm._v(" "),
+        _c("span", { domProps: { innerHTML: _vm._s(_vm.option.text) } }),
+        _vm._v(" "),
         _vm.option.iconRight
           ? _c("span", {
               staticClass:
@@ -839,8 +851,8 @@
     },
     computed: {},
     methods: {
-      vnbItemClicked: function vnbItemClicked(text) {
-        this.$emit("vnb-item-clicked", text);
+      vnbItemClicked: function vnbItemClicked(text, path) {
+        this.$emit("vnb-item-clicked", text, path);
       }
     },
     components: {
@@ -996,8 +1008,6 @@
                     }
                   },
                   [
-                    _c("title", [_vm._v("Menu")]),
-                    _vm._v(" "),
                     _c(
                       "g",
                       { attrs: { transform: "matrix(.1 0 0 -.1 0 100)" } },
@@ -1083,7 +1093,7 @@
         this.$emit("close-button-clicked");
       },
       itemSelected: function itemSelected(option) {
-        this.$emit("vnb-item-clicked", option.text);
+        this.$emit("vnb-item-clicked", option.text, option.path);
         this.closeButtonClicked();
       }
     },
@@ -1140,16 +1150,14 @@
                           staticClass: "vnb__popup__top__close-button__image",
                           style: { fill: _vm.options.collapseButtonCloseColor },
                           attrs: {
-                            height: "100pt",
+                            height: "50pt",
                             preserveAspectRatio: "xMidYMid meet",
                             viewBox: "0 0 100 100",
-                            width: "100pt",
+                            width: "50pt",
                             xmlns: "http://www.w3.org/2000/svg"
                           }
                         },
                         [
-                          _c("title", [_vm._v("Close button")]),
-                          _vm._v(" "),
                           _c("path", {
                             attrs: {
                               d:
@@ -1215,9 +1223,9 @@
                                   })
                                 : _vm._e(),
                               _vm._v(
-                                "\n            " +
+                                "\n              " +
                                   _vm._s(option.text) +
-                                  "\n            "
+                                  "\n              "
                               ),
                               option.iconRight
                                 ? _c("span", {
@@ -1274,9 +1282,9 @@
                                     },
                                     [
                                       _vm._v(
-                                        "\n                " +
+                                        "\n                  " +
                                           _vm._s(subOption.text) +
-                                          "\n                "
+                                          "\n                  "
                                       ),
                                       _c(
                                         "span",
@@ -1286,9 +1294,9 @@
                                         },
                                         [
                                           _vm._v(
-                                            "\n                  " +
+                                            "\n                    " +
                                               _vm._s(subOption.subText) +
-                                              "\n                "
+                                              "\n                  "
                                           )
                                         ]
                                       )
@@ -1363,59 +1371,62 @@
     computed: {
       finalOptions: function finalOptions() {
         // What we're doing here is giving each top-level menu-option a unique id
-        if (this.options.menuOptionsLeft) {
-          for (var x = 0; x < this.options.menuOptionsLeft.length; x++) {
-            this.$set(this.options.menuOptionsLeft[x], "id", uuidV4());
+        if (this.options !== undefined) {
+          if (this.options.menuOptionsLeft) {
+            for (var x = 0; x < this.options.menuOptionsLeft.length; x++) {
+              this.$set(this.options.menuOptionsLeft[x], "id", uuidV4());
+            }
           }
-        }
-        if (this.options.menuOptionsRight) {
-          for (var x$1 = 0; x$1 < this.options.menuOptionsRight.length; x$1++) {
-            this.$set(this.options.menuOptionsRight[x$1], "id", uuidV4());
+          if (this.options.menuOptionsRight) {
+            for (var x$1 = 0; x$1 < this.options.menuOptionsRight.length; x$1++) {
+              this.$set(this.options.menuOptionsRight[x$1], "id", uuidV4());
+            }
           }
-        }
 
-        return {
-          elementId: this.options.elementId ? this.options.elementId : uuidV4(),
-          isUsingVueRouter: this.options.isUsingVueRouter ? true : false,
-          mobileBreakpoint: this.options.mobileBreakpoint
-            ? this.options.mobileBreakpoint
-            : 992,
-          brandImagePath: this.options.brandImagePath
-            ? this.options.brandImagePath
-            : "/",
-          brandImage: this.options.brandImage ? this.options.brandImage : null,
-          brandImageAltText: this.options.brandImageAltText
-            ? this.options.brandImageAltText
-            : "brand-image",
-          collapseButtonImageOpen: this.options.collapseButtonImageOpen
-            ? this.options.collapseButtonImageOpen
-            : null,
-          collapseButtonImageClose: this.options.collapseButtonImageClose
-            ? this.options.collapseButtonImageClose
-            : null,
-          collapseButtonOpenColor: this.options.collapseButtonOpenColor
-            ? this.options.collapseButtonOpenColor
-            : '#373737',
-          collapseButtonCloseColor: this.options.collapseButtonCloseColor
-            ? this.options.collapseButtonCloseColor
-            : '#373737',
-          showBrandImageInMobilePopup: this.options.showBrandImageInMobilePopup
-            ? true
-            : false,
-          ariaLabelMainNav: this.options.ariaLabelMainNav
-            ? this.options.ariaLabelMainNav
-            : "Main Navigation",
-          tooltipAnimationType: this.options.tooltipAnimationType
-            ? this.options.tooltipAnimationType
-            : "shift-away",
-          tooltipPlacement: this.options.tooltipPlacement || "bottom",
-          menuOptionsLeft: this.options.menuOptionsLeft
-            ? this.options.menuOptionsLeft
-            : [],
-          menuOptionsRight: this.options.menuOptionsRight
-            ? this.options.menuOptionsRight
-            : []
-        };
+          return {
+            isMobile: this.options.isMobile,
+            elementId: this.options.elementId ? this.options.elementId : uuidV4(),
+            isUsingVueRouter: this.options.isUsingVueRouter ? true : false,
+            mobileBreakpoint: this.options.mobileBreakpoint
+              ? this.options.mobileBreakpoint
+              : 992,
+            brandImagePath: this.options.brandImagePath
+              ? this.options.brandImagePath
+              : "/",
+            brandImage: this.options.brandImage ? this.options.brandImage : null,
+            brandImageAltText: this.options.brandImageAltText
+              ? this.options.brandImageAltText
+              : "brand-image",
+            collapseButtonImageOpen: this.options.collapseButtonImageOpen
+              ? this.options.collapseButtonImageOpen
+              : null,
+            collapseButtonImageClose: this.options.collapseButtonImageClose
+              ? this.options.collapseButtonImageClose
+              : null,
+            collapseButtonOpenColor: this.options.collapseButtonOpenColor
+              ? this.options.collapseButtonOpenColor
+              : '#373737',
+            collapseButtonCloseColor: this.options.collapseButtonCloseColor
+              ? this.options.collapseButtonCloseColor
+              : '#373737',
+            showBrandImageInMobilePopup: this.options.showBrandImageInMobilePopup
+              ? true
+              : false,
+            ariaLabelMainNav: this.options.ariaLabelMainNav
+              ? this.options.ariaLabelMainNav
+              : "Main Navigation",
+            tooltipAnimationType: this.options.tooltipAnimationType
+              ? this.options.tooltipAnimationType
+              : "shift-away",
+            tooltipPlacement: this.options.tooltipPlacement || "bottom",
+            menuOptionsLeft: this.options.menuOptionsLeft
+              ? this.options.menuOptionsLeft
+              : [],
+            menuOptionsRight: this.options.menuOptionsRight
+              ? this.options.menuOptionsRight
+              : []
+          };
+        }
       }
     },
     methods: {
@@ -1427,8 +1438,8 @@
         this.menuIsVisible = true;
         this.$emit("vnb-mobile-popup-shown");
       },
-      vnbItemClicked: function vnbItemClicked(text) {
-        this.$emit("vnb-item-clicked", text);
+      vnbItemClicked: function vnbItemClicked(text, path) {
+        this.$emit("vnb-item-clicked", text, path);
       }
     },
     components: {
@@ -1449,17 +1460,19 @@
     return _c(
       "nav",
       {
-        staticClass: "vnb",
+        class: _vm.finalOptions.isMobile == 1 ? "vnb-mobile" : "vnb",
         attrs: {
           id: _vm.finalOptions.elementId,
           "aria-label": _vm.finalOptions.ariaLabelMainNav
         }
       },
       [
-        _c("brand-image", {
-          attrs: { options: _vm.finalOptions },
-          on: { "vnb-item-clicked": _vm.vnbItemClicked }
-        }),
+        _vm.finalOptions.isMobile == 1 && _vm.finalOptions.brandImage
+          ? _c("brand-image", {
+              attrs: { options: _vm.finalOptions },
+              on: { "vnb-item-clicked": _vm.vnbItemClicked }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _c("menu-options", {
           attrs: { options: _vm.finalOptions, type: "left" },

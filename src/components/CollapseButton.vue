@@ -22,7 +22,7 @@
             class="vnb__collapse-button__image"
             :style="{ fill: options.collapseButtonOpenColor }"
         >
-            <title>Menu</title>
+<!--            <title>Menu</title>-->
             <g transform="matrix(.1 0 0 -.1 0 100)">
                 <path d="m0 850v-40h500 500v40 40h-500-500z"/>
                 <path d="m0 495v-45h500 500v45 45h-500-500z"/>

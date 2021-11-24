@@ -1,6 +1,6 @@
 {
   "name": "vue-nav-menu-51crack",
-  "version": "4.1.4",
+  "version": "4.1.38",
   "description": "A simple, pretty navbar for your Vue projects.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
@@ -100,5 +100,8 @@
     "doc": "docs",
     "example": "example",
     "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/johndatserakis/vue-navigation-bar/issues"
   }
 }

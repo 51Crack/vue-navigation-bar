@@ -57,8 +57,8 @@ export default {
   },
   computed: {},
   methods: {
-    vnbItemClicked(text) {
-      this.$emit("vnb-item-clicked", text);
+    vnbItemClicked(text, path) {
+      this.$emit("vnb-item-clicked", text, path);
     }
   },
   components: {

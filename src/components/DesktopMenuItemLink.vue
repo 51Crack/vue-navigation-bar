@@ -7,7 +7,7 @@
     :aria-label="option.text"
     tabindex="0"
     :isLinkAction="option.isLinkAction ? true : false"
-    @click.native="$emit('vnb-item-clicked', option.text)"
+    @click.native="$emit('vnb-item-clicked', option.text, option.path)"
   >
     <span
       v-if="option.iconLeft"
@@ -52,7 +52,7 @@
         { 'vnb__menu-options__option__arrow--hover': isExpanded }
       ]"
     >
-      <title>Toggle Arrow</title>
+<!--      <title>Toggle Arrow</title>-->
       <path d="m12 268c-7-7-12-17-12-23 0-13 232-245 245-245 6 0 64 54 129 119 119 119 132 142 90 158-11 4-44-23-113-91-53-53-101-96-106-96-6 0-53 43-105 95s-99 95-105 95-16-5-23-12z" transform="matrix(.1 0 0 -.1 0 28)"/>
     </svg>
 
@@ -71,7 +71,7 @@
           class="vnb__sub-menu-options__option__link"
           @click.native="
             subMenuItemSelected(subOption.text);
-            $emit('vnb-item-clicked', subOption.text);
+            $emit('vnb-item-clicked', subOption.text, subOption.path);
           "
           :aria-label="subOption.text"
           tabindex="0"
@@ -242,7 +242,7 @@ export default {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        font-size: 0.9rem;
+        font-size: 1rem;
 
         &:hover {
           color: $black;
@@ -284,10 +284,10 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: $border-radius;
-    padding: 10px 0;
+    padding: 6px 0;
 
     &__option {
-      min-width: 250px;
+      min-width: 200px;
       max-width: 300px;
 
       &__link {

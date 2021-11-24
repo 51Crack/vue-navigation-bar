@@ -24,15 +24,15 @@
           />
           <svg
             v-else
-            height="100pt"
+            height="50pt"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 100 100"
-            width="100pt"
+            width="50pt"
             xmlns="http://www.w3.org/2000/svg"
             class="vnb__popup__top__close-button__image"
             :style="{ fill: options.collapseButtonCloseColor }"
           >
-            <title>Close button</title>
+<!--            <title>Close button</title>-->
             <path d="m42 967c-12-13-22-27-22-33 0-5 93-102 207-216l208-208-208-208c-114-114-207-214-207-223 0-8 11-26 25-39l26-24 214 214 215 215 215-215 214-214 26 24c14 13 25 28 25 34s-92 103-205 216-205 209-205 215 92 102 205 215 205 210 205 216c0 12-42 54-55 54-5 0-104-94-220-210l-210-210-210 210c-115 116-212 210-216 210-3 0-15-10-27-23z" transform="matrix(.1 0 0 -.1 0 100)"/>
           </svg>
         </button>
@@ -143,7 +143,7 @@ export default {
       this.$emit("close-button-clicked");
     },
     itemSelected(option) {
-      this.$emit("vnb-item-clicked", option.text);
+      this.$emit("vnb-item-clicked", option.text, option.path);
       this.closeButtonClicked();
     }
   },
@@ -186,8 +186,8 @@ export default {
 
       &__close-button {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 20px;
+        right: 0px;
         cursor: pointer;
         border: 0;
         background: transparent;

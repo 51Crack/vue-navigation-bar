@@ -9,14 +9,14 @@
     ]"
     :aria-label="option.text"
     :isLinkAction="option.isLinkAction ? true : false"
-    @click.native="$emit('vnb-item-clicked', option.text)"
+    @click.native="$emit('vnb-item-clicked', option.text, option.path)"
   >
     <span
       v-if="option.iconLeft"
       class="vnb__menu-options__option__button__icon vnb__menu-options__option__button__icon--left"
       v-html="option.iconLeft"
     ></span>
-    {{option.text}}
+    <span v-html="option.text"></span>
     <span
       v-if="option.iconRight"
       class="vnb__menu-options__option__button__icon vnb__menu-options__option__button__icon--right"

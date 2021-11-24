@@ -190,6 +190,7 @@ export default {
       tippy(el, {
         theme: this.options.theme,
         content: template,
+        allowHTML: true, //2021-11-24新增
         interactive: true,
         animation: this.options.tooltipAnimationType,
         role: "Menu",

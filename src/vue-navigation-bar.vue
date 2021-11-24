@@ -1,9 +1,9 @@
 <template>
-  <nav
-    :class="finalOptions.isMobile == 1 ? 'vnb-mobile' : 'vnb'"
-    :id="finalOptions.elementId"
-    :aria-label="finalOptions.ariaLabelMainNav"
-  >
+  <nav v-if="finalOptions != undefined"
+       :class="finalOptions.isMobile == 1 ? 'vnb-mobile' : 'vnb'"
+       :id="finalOptions.elementId"
+       :aria-label="finalOptions.ariaLabelMainNav">
+
     <brand-image v-if="finalOptions.isMobile == 1 && finalOptions.brandImage" :options="finalOptions" @vnb-item-clicked="vnbItemClicked" />
 
     <menu-options
@@ -89,6 +89,7 @@ export default {
 
         return {
           isMobile: this.options.isMobile,
+          theme: this.options.theme ? this.options.theme : 'light',
           elementId: this.options.elementId ? this.options.elementId : uuidV4(),
           isUsingVueRouter: this.options.isUsingVueRouter ? true : false,
           mobileBreakpoint: this.options.mobileBreakpoint
@@ -169,7 +170,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   a {
     text-decoration: none;

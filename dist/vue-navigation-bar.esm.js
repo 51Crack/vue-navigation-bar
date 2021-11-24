@@ -333,9 +333,10 @@ var script$2 = {
         "sub-menu-options-" + this.option.id
       );
       template.style.display = "block";
+      console.log('theme:' + this.options.theme);
 
       tippy(el, {
-        theme: "light",
+        theme: this.options.theme,
         content: template,
         interactive: true,
         animation: this.options.tooltipAnimationType,
@@ -864,7 +865,8 @@ var __vue_render__$4 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _vm.$vssWidth > _vm.options.mobileBreakpoint
+  return _vm.options != undefined &&
+    _vm.$vssWidth > _vm.options.mobileBreakpoint
     ? _c(
         "div",
         {
@@ -1217,11 +1219,11 @@ var __vue_render__$6 = function() {
                                   }
                                 })
                               : _vm._e(),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(option.text) +
-                                "\n              "
-                            ),
+                            _vm._v(" "),
+                            _c("span", {
+                              domProps: { innerHTML: _vm._s(option.text) }
+                            }),
+                            _vm._v(" "),
                             option.iconRight
                               ? _c("span", {
                                   staticClass:
@@ -1233,14 +1235,11 @@ var __vue_render__$6 = function() {
                               : _vm._e()
                           ]
                         )
-                      : _c(
-                          "span",
-                          {
-                            staticClass:
-                              "vnb__popup__bottom__menu-options__option__link vnb__popup__bottom__menu-options__option__link--no-highlight"
-                          },
-                          [_vm._v(_vm._s(option.text))]
-                        ),
+                      : _c("span", {
+                          staticClass:
+                            "vnb__popup__bottom__menu-options__option__link vnb__popup__bottom__menu-options__option__link--no-highlight",
+                          domProps: { innerHTML: _vm._s(option.text) }
+                        }),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -1269,6 +1268,9 @@ var __vue_render__$6 = function() {
                                         ? true
                                         : false
                                     },
+                                    domProps: {
+                                      innerHTML: _vm._s(subOption.text)
+                                    },
                                     nativeOn: {
                                       click: function($event) {
                                         return _vm.itemSelected(subOption)
@@ -1276,25 +1278,13 @@ var __vue_render__$6 = function() {
                                     }
                                   },
                                   [
-                                    _vm._v(
-                                      "\n                  " +
-                                        _vm._s(subOption.text) +
-                                        "\n                  "
-                                    ),
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "vnb__popup__bottom__sub-menu-options__option__link__sub-text"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    " +
-                                            _vm._s(subOption.subText) +
-                                            "\n                  "
-                                        )
-                                      ]
-                                    )
+                                    _c("span", {
+                                      staticClass:
+                                        "vnb__popup__bottom__sub-menu-options__option__link__sub-text",
+                                      domProps: {
+                                        innerHTML: _vm._s(subOption.subText)
+                                      }
+                                    })
                                   ]
                                 )
                               : _vm._e()
@@ -1380,6 +1370,7 @@ var script$8 = {
 
         return {
           isMobile: this.options.isMobile,
+          theme: this.options.theme ? this.options.theme : 'light',
           elementId: this.options.elementId ? this.options.elementId : uuidV4(),
           isUsingVueRouter: this.options.isUsingVueRouter ? true : false,
           mobileBreakpoint: this.options.mobileBreakpoint
@@ -1452,77 +1443,79 @@ var __vue_render__$7 = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "nav",
-    {
-      class: _vm.finalOptions.isMobile == 1 ? "vnb-mobile" : "vnb",
-      attrs: {
-        id: _vm.finalOptions.elementId,
-        "aria-label": _vm.finalOptions.ariaLabelMainNav
-      }
-    },
-    [
-      _vm.finalOptions.isMobile == 1 && _vm.finalOptions.brandImage
-        ? _c("brand-image", {
-            attrs: { options: _vm.finalOptions },
+  return _vm.finalOptions != undefined
+    ? _c(
+        "nav",
+        {
+          class: _vm.finalOptions.isMobile == 1 ? "vnb-mobile" : "vnb",
+          attrs: {
+            id: _vm.finalOptions.elementId,
+            "aria-label": _vm.finalOptions.ariaLabelMainNav
+          }
+        },
+        [
+          _vm.finalOptions.isMobile == 1 && _vm.finalOptions.brandImage
+            ? _c("brand-image", {
+                attrs: { options: _vm.finalOptions },
+                on: { "vnb-item-clicked": _vm.vnbItemClicked }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("menu-options", {
+            attrs: { options: _vm.finalOptions, type: "left" },
             on: { "vnb-item-clicked": _vm.vnbItemClicked }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("menu-options", {
-        attrs: { options: _vm.finalOptions, type: "left" },
-        on: { "vnb-item-clicked": _vm.vnbItemClicked }
-      }),
-      _vm._v(" "),
-      _vm.$vssWidth > _vm.options.mobileBreakpoint
-        ? _vm._t("custom-section")
-        : _vm._e(),
-      _vm._v(" "),
-      _c("menu-options", {
-        attrs: { options: _vm.finalOptions, type: "right" },
-        on: { "vnb-item-clicked": _vm.vnbItemClicked }
-      }),
-      _vm._v(" "),
-      _vm.finalOptions.menuOptionsLeft.length ||
-      _vm.finalOptions.menuOptionsRight.length
-        ? _c("collapse-button", {
-            attrs: {
-              options: _vm.finalOptions,
-              menuIsVisible: _vm.menuIsVisible
-            },
-            on: { "collapse-button-clicked": _vm.showMobilePopup }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.finalOptions.menuOptionsLeft.length ||
-      _vm.finalOptions.menuOptionsRight.length
-        ? _c("popup", {
-            attrs: {
-              options: _vm.finalOptions,
-              menuIsVisible: _vm.menuIsVisible
-            },
-            on: {
-              "close-button-clicked": _vm.closeMobilePopup,
-              "vnb-item-clicked": _vm.vnbItemClicked
-            },
-            scopedSlots: _vm._u(
-              [
-                {
-                  key: "custom-section",
-                  fn: function() {
-                    return [_vm._t("custom-section")]
-                  },
-                  proxy: true
-                }
-              ],
-              null,
-              true
-            )
-          })
-        : _vm._e()
-    ],
-    2
-  )
+          }),
+          _vm._v(" "),
+          _vm.$vssWidth > _vm.options.mobileBreakpoint
+            ? _vm._t("custom-section")
+            : _vm._e(),
+          _vm._v(" "),
+          _c("menu-options", {
+            attrs: { options: _vm.finalOptions, type: "right" },
+            on: { "vnb-item-clicked": _vm.vnbItemClicked }
+          }),
+          _vm._v(" "),
+          _vm.finalOptions.menuOptionsLeft.length ||
+          _vm.finalOptions.menuOptionsRight.length
+            ? _c("collapse-button", {
+                attrs: {
+                  options: _vm.finalOptions,
+                  menuIsVisible: _vm.menuIsVisible
+                },
+                on: { "collapse-button-clicked": _vm.showMobilePopup }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.finalOptions.menuOptionsLeft.length ||
+          _vm.finalOptions.menuOptionsRight.length
+            ? _c("popup", {
+                attrs: {
+                  options: _vm.finalOptions,
+                  menuIsVisible: _vm.menuIsVisible
+                },
+                on: {
+                  "close-button-clicked": _vm.closeMobilePopup,
+                  "vnb-item-clicked": _vm.vnbItemClicked
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "custom-section",
+                      fn: function() {
+                        return [_vm._t("custom-section")]
+                      },
+                      proxy: true
+                    }
+                  ],
+                  null,
+                  true
+                )
+              })
+            : _vm._e()
+        ],
+        2
+      )
+    : _vm._e()
 };
 var __vue_staticRenderFns__$7 = [];
 __vue_render__$7._withStripped = true;

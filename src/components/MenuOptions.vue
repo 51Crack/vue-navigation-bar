@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="$vssWidth > options.mobileBreakpoint"
+    v-if="options != undefined && $vssWidth > options.mobileBreakpoint"
     :class="[
       'vnb__menu-options',
       { 'vnb__menu-options--left': type === 'left' },
@@ -70,31 +70,31 @@ export default {
 </script>
 
 <style lang="scss">
-//@import "../assets/css/main.scss";
-//
-//.vnb {
-//  &__menu-options {
-//    display: flex;
-//    flex-direction: row;
-//    align-items: center;
-//
-//    &--left {
-//      margin-right: auto;
-//      justify-content: flex-start;
-//      padding-left: 30px;
-//    }
-//
-//    &--right {
-//      margin-left: auto;
-//      justify-content: flex-end;
-//      padding-right: 10px;
-//    }
-//
-//    &__option {
-//      &:not(:last-child) {
-//        margin-right: 20px;
-//      }
-//    }
-//  }
-//}
+@import "../assets/css/main.scss";
+
+.vnb {
+  &__menu-options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &--left {
+      //margin-right: auto;
+      justify-content: flex-start;
+      //padding-left: 30px;
+    }
+
+    &--right {
+      //margin-left: auto;
+      justify-content: flex-end;
+      //padding-right: 10px;
+    }
+
+    &__option {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
 </style>

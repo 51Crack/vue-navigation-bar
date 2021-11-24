@@ -38,6 +38,7 @@
         </button>
       </div>
 
+      <!--菜单列表-->
       <div class="vnb__popup__bottom">
         <div
           v-if="!!this.$slots['custom-section']"
@@ -64,31 +65,31 @@
               :aria-label="option.text"
               :isLinkAction="option.isLinkAction ? true : false"
             >
+              <!-- 一级菜单 -->
               <span
                 v-if="option.iconLeft"
                 class="vnb__popup__bottom__menu-options__option__link__icon vnb__popup__bottom__menu-options__option__link__icon--left"
-                v-html="option.iconLeft"
-              ></span>
-              {{ option.text }}
+                v-html="option.iconLeft"></span>
+                  <span v-html="option.text">
+              </span>
               <span
                 v-if="option.iconRight"
                 class="vnb__popup__bottom__menu-options__option__link__icon vnb__popup__bottom__menu-options__option__link__icon--right"
                 v-html="option.iconRight"
               ></span>
             </dynamic-link>
-
             <span
               v-else
               class="vnb__popup__bottom__menu-options__option__link vnb__popup__bottom__menu-options__option__link--no-highlight"
-              >{{ option.text }}</span
-            >
+              v-html="option.text">
+            </span>
 
+            <!-- 二级菜单 -->
             <div class="vnb__popup__bottom__sub-menu-options">
               <div
                 v-for="(subOption, index) in option.subMenuOptions"
                 :key="index"
-                class="vnb__popup__bottom__sub-menu-options__option"
-              >
+                class="vnb__popup__bottom__sub-menu-options__option">
                 <dynamic-link
                   :path="subOption.path"
                   :isUsingVueRouter="options.isUsingVueRouter"
@@ -96,10 +97,11 @@
                   class="vnb__popup__bottom__sub-menu-options__option__link"
                   @click.native="itemSelected(subOption)"
                   :aria-label="subOption.text"
-                  :isLinkAction="option.isLinkAction ? true : false">
-                  {{ subOption.text }}
-                  <span class="vnb__popup__bottom__sub-menu-options__option__link__sub-text">
-                    {{ subOption.subText }}
+                  :isLinkAction="option.isLinkAction ? true : false"
+                  v-html="subOption.text"
+                >
+                  <span class="vnb__popup__bottom__sub-menu-options__option__link__sub-text"
+                        v-html="subOption.subText">
                   </span>
                 </dynamic-link>
               </div>

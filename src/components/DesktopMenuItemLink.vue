@@ -9,6 +9,7 @@
     :isLinkAction="option.isLinkAction ? true : false"
     @click.native="$emit('vnb-item-clicked', option.text, option.path)"
   >
+    <!-- 一级菜单（无二级菜单） -->
     <span
       v-if="option.iconLeft"
       class="vnb__menu-options__option__link__icon vnb__menu-options__option__button__icon--left"
@@ -22,6 +23,7 @@
     ></span>
   </dynamic-link>
 
+  <!-- 一级菜单（有二级菜单） -->
   <span
     v-else
     class="vnb__menu-options__option__link"
@@ -56,6 +58,7 @@
       <path d="m12 268c-7-7-12-17-12-23 0-13 232-245 245-245 6 0 64 54 129 119 119 119 132 142 90 158-11 4-44-23-113-91-53-53-101-96-106-96-6 0-53 43-105 95s-99 95-105 95-16-5-23-12z" transform="matrix(.1 0 0 -.1 0 28)"/>
     </svg>
 
+    <!-- 二级菜单 -->
     <div
       class="vnb__sub-menu-options"
       v-if="option.type === 'link'"
@@ -83,12 +86,16 @@
             v-html="subOption.iconLeft"></span>
 
           <span class="vnb__sub-menu-options__option__link__text-wrapper">
-            <span class="vnb__sub-menu-options__option__link__text-wrapper__text"><span v-html="subOption.text"></span></span>
+            <span class="vnb__sub-menu-options__option__link__text-wrapper__text">
+              <span v-html="subOption.text">
+              </span>
+            </span>
 
             <span
               v-if="subOption.subText"
               class="vnb__sub-menu-options__option__link__text-wrapper__sub-text">
-              <span v-html="subOption.subText"></span>
+              <span v-html="subOption.subText">
+              </span>
             </span>
           </span>
 
@@ -181,7 +188,7 @@ export default {
       template.style.display = "block";
 
       tippy(el, {
-        theme: "light",
+        theme: this.options.theme,
         content: template,
         interactive: true,
         animation: this.options.tooltipAnimationType,

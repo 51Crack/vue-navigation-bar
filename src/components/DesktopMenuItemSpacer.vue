@@ -25,13 +25,13 @@ export default {
 </script>
 
 <style lang="scss">
-    .vnb {
-        &__menu-options {
-            &__option {
-                &__spacer {
-                    width: 30px;
-                }
-            }
-        }
-    }
+    //.vnb {
+    //    &__menu-options {
+    //        &__option {
+    //            &__spacer {
+    //                width: 30px;
+    //            }
+    //        }
+    //    }
+    //}
 </style>

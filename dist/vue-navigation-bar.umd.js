@@ -338,11 +338,11 @@
           "sub-menu-options-" + this.option.id
         );
         template.style.display = "block";
-        console.log('theme:' + this.options.theme);
-
+        console.log('text:' + this.option.text);
         tippy__default(el, {
           theme: this.options.theme,
-          content: template,
+          content: this.option.text, //template,
+          allowHTML: true, //2021-11-24新增
           interactive: true,
           animation: this.options.tooltipAnimationType,
           role: "Menu",

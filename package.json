@@ -1,6 +1,6 @@
 {
   "name": "vue-nav-menu-51crack",
-  "version": "4.1.50",
+  "version": "4.1.53",
   "description": "A simple, pretty navbar for your Vue projects.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "tippy.js": "^6.2.4",
+    "tippy.js": "^6.3.7",
     "vue-screen-size": "^1.0.1",
     "vue2-transitions": "^0.3.0"
   },

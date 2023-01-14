@@ -338,20 +338,19 @@
           "sub-menu-options-" + this.option.id
         );
         template.style.display = "block";
-        console.log('text:' + this.option.text);
+
         tippy__default(el, {
-          theme: this.options.theme,
-          content: this.option.text, //template,
-          allowHTML: true, //2021-11-24新增
+          theme: this.options.theme ? this.options.theme : 'light',
+          content: template,
           interactive: true,
-          animation: this.options.tooltipAnimationType,
+          animation: this.options.tooltipAnimationType ? this.options.tooltipAnimationType : 'shift-away',
           role: "Menu",
           // trigger: 'click', // for testing
           trigger: "click mouseenter focus",
           appendTo: "parent",
           arrow: true,
           inertia: false,
-          placement: this.options.tooltipPlacement,
+          placement: this.options.tooltipPlacement ? this.options.tooltipPlacement : 'bottom',
           popperOptions: {
             modifiers: [
               {

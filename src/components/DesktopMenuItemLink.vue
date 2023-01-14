@@ -114,6 +114,9 @@
 <script>
 import DynamicLink from "../components/DynamicLink.vue";
 import "tippy.js/themes/light.css";
+import "tippy.js/themes/light-border.css";
+import "tippy.js/themes/material.css";
+import "tippy.js/themes/translucent.css";
 import 'tippy.js/animations/shift-away.css';
 import 'tippy.js/animations/shift-toward.css';
 import 'tippy.js/animations/scale.css';
@@ -188,17 +191,17 @@ export default {
       template.style.display = "block";
 
       tippy(el, {
-        theme: this.options.theme,
+        theme: this.options.theme ? this.options.theme : 'light',
         content: template,
         interactive: true,
-        animation: this.options.tooltipAnimationType,
+        animation: this.options.tooltipAnimationType ? this.options.tooltipAnimationType : 'shift-away',
         role: "Menu",
         // trigger: 'click', // for testing
         trigger: "click mouseenter focus",
         appendTo: "parent",
         arrow: true,
         inertia: false,
-        placement: this.options.tooltipPlacement,
+        placement: this.options.tooltipPlacement ? this.options.tooltipPlacement : 'bottom',
         popperOptions: {
           modifiers: [
             {
